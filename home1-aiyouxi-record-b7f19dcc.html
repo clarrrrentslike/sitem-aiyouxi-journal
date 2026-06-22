@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 数字娱乐的讲述者</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, -apple-system, sans-serif;
+            background-color: #f4f3f0;
+            color: #1e1e1e;
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0b0e14 0%, #1f2835 70%, #2a3548 100%);
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(100, 180, 255, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(210, 140, 255, 0.05) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #edeef0;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 span {
+            color: #9bc5ff;
+            font-weight: 700;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #b3c2d6;
+            max-width: 640px;
+            margin-top: 0.2rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero .meta-tag {
+            margin-top: 2rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(3px);
+            padding: 0.4rem 1.6rem;
+            border-radius: 40px;
+            color: #cbd5e6;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2.8rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2.8rem;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .intro-block p {
+            font-size: 1.08rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #2d6b9e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #b3cce6;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .accent-link:hover {
+            color: #1c4b73;
+            border-bottom: 1px solid #1c4b73;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 450;
+            letter-spacing: -0.3px;
+            margin-bottom: 1.6rem;
+            color: #1e2a3a;
+            border-left: 4px solid #2d6b9e;
+            padding-left: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 1.8rem 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #ebedf0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #1f2a3a;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            font-size: 0.98rem;
+            color: #3f4a56;
+        }
+
+        .faq-mini {
+            background: #f8f9fc;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #6c8eb0;
+        }
+
+        .faq-mini h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1f2a3a;
+        }
+
+        .faq-mini p {
+            color: #3d4a5a;
+            margin-bottom: 1rem;
+        }
+
+        .faq-mini p:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 2.5rem 2rem 2rem;
+            background: #eae9e5;
+            margin-top: 2rem;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .footer-note p {
+            color: #2c3e4e;
+            font-size: 1.05rem;
+        }
+
+        .footer-note .finger {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #5d748a;
+            font-size: 0.9rem;
+            letter-spacing: 0.4px;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .intro-block {
+                padding: 2rem 1.5rem;
+            }
+
+            .container {
+                padding: 2rem 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-mini {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>关于<span>爱游戏</span></h1>
+        <p class="sub">从像素到沉浸式世界 · 理解电子娱乐的文化脉络</p>
+        <div class="meta-tag">专题 · 数字媒介漫谈</div>
+    </section>
+
+    <div class="container">
+        <div class="intro-block">
+            <p>在过去的三十年里，电子游戏已经从少数人的爱好演变为全球最活跃的媒介形式之一。它融合了叙事、音乐、视觉与交互，形成一种独特而复杂的语言。许多玩家在成长过程中，不仅记住了某个关卡或头目战，更记住了故事里的情感与选择。<a class="accent-link" href="https://home1-aiyouxi.com">爱游戏</a>所关注的，正是这种媒介背后的人文温度与设计逻辑——它不只谈论游戏本身，更尝试拆解其为何能吸引如此多不同背景的人。</p>
+            <p>当我们把游戏当作一种文本去阅读，就会发现每一条机制背后都藏着创作者的审慎考量：难度曲线如何塑造心流，随机性如何制造惊喜，多人协作如何催生默契。理解这些，便更能体会为什么有人愿意花费上百小时沉浸于同一个虚拟世界。</p>
+        </div>
+
+        <h2 class="section-title">一种值得认真对待的媒介</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>交互即语言</h3>
+                <p>游戏用操作代替阅读，用反馈代替描写。这种交互语法让它能表达传统媒介难以传递的体验，比如紧张、掌控感或逐渐增长的熟练度。</p>
+            </div>
+            <div class="feature-card">
+                <h3>多元的叙事可能</h3>
+                <p>从线性剧情到分支选择，从环境叙事到玩家驱动的故事，游戏叙事早已超越“过关看动画”的阶段，形成了丰富的谱系。</p>
+            </div>
+            <div class="feature-card">
+                <h3>社群与文化</h3>
+                <p>联机协作、MOD创作、速通挑战……玩家社群本身就在不断生成新的内容与意义。游戏文化早已不局限于屏幕之内。</p>
+            </div>
+        </div>
+
+        <div class="intro-block">
+            <p>许多人第一次接触“大作”时，往往被其视觉效果震撼，但真正令人流连忘返的，往往是那些细小的设计——一个恰到好处的音效、一段等待时的角色小动作、或者一个隐藏房间里的留言。好的游戏把人放在一个值得探索的系统里，而不是只提供单纯的刺激。</p>
+            <p>也正因如此，越来越多研究开始关注游戏对认知、情感与社交的潜在影响。与其简单地将游戏归类为娱乐消耗，不如将其视为一种需要审美的参与形式。就像电影有镜头语言，游戏也有自己的规则美学。如果你也对这种媒介语言抱有好奇，<a class="accent-link" href="https://home1-aiyouxi.com">爱游戏</a>会持续带来围绕游戏文化与设计的观察，从作品本身延展到更广泛的思考。</p>
+        </div>
+
+        <div class="faq-mini">
+            <h3>❓ 一些常见的好奇</h3>
+            <p><strong>“游戏玩得多会不会影响注意力？”</strong> —— 这取决于游戏类型与时长。策略游戏或解谜游戏反而需要持续的专注与规划，部分研究指出适度游戏有助于提升任务切换能力。关键在于平衡与选择适合自己的作品。</p>
+            <p><strong>“独立游戏和商业大作有什么区别？”</strong> —— 商业大作通常拥有更高预算与更长开发周期，追求视听规模与普适性；独立游戏则往往更侧重创意表达与实验性机制，两者各有魅力，也常常互相启发。</p>
+            <p><strong>“如何看待游戏里的故事？”</strong> —— 游戏故事可以像小说一样深刻，但它的表达必须与玩法结合。最好的游戏叙事往往是那些让你通过“做”而非“看”来理解角色处境的体验。</p>
+        </div>
+
+        <div class="footer-note">
+            <p>游戏是一种体验，也是一种语言。下一次拿起手柄或敲击键盘时，不妨留意那些设计者留下的线索。</p>
+            <span class="finger">—— 媒介的乐趣，在于它总在自我更新</span>
+        </div>
+    </div>
+</body>
+</html>
